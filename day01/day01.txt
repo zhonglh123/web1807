@@ -1,0 +1,84 @@
+沈
+shenyg@njrst.com.cn
+
+版本控制管理工具
+    集中式版本控制管理
+        CVS,SVN
+    分布式版本控制管理
+        git
+
+git最初是为了管理Linux内核代码而诞生的
+
+1.Shell指令
+    Linux中文件夹也叫作目录
+    1)pwd,cd,ls
+        pwd:print working directory  打印当前所在的路径
+        ls:list   显示当前目录中的所有非隐藏文件或目录
+            蓝色(后缀/):文件夹或者目录
+            绿色(后缀*):可执行文件 .lnk表示超链接，快捷方式
+            白色:文件
+            ls -a 显示所有的文件或目录,包括隐藏的
+              Linux系统中,文件的隐藏式通过文件名前面加.实现的
+            ls -it 以列表形式，按照时间顺序显示非隐藏文件或目录的详细信息
+        cd:change directory  切换工作目录
+            cd a  切换到当前目录下的a目录中去
+            cd .. 切换到上一级目录
+            cd ~  切换到当前登录用户的主目录
+    2)mkdir
+        make directory  新建文件夹/目录
+        mkdir 目录的路径
+        mkdir a     在当前路径下新建目录a
+            当a已经存在时,使用该指令会报错
+        mkdir a/b   在a目录下创建b
+            如果父级目录不存在，则报错
+        mkdir -p a/b    在a目录下创建b，如果a目录不存在，则先创建a，再创建b
+    3)touch
+        新建文件
+        touch 文件的路径
+        touch 1.txt 在当前目录下创建1.txt
+            如果touch的文件已经存在，则不会创建新的文件，而是修改文件的最后访问时间
+            如果touch的是一个文件夹，则修改文件夹的最后访问时间
+    4)rmdir
+        remove directory删除文件夹/目录
+                只能删除空目录
+        rmdir 文件夹路径
+        rmdir a/b/c 删除a下的b下的c文件夹，a，b文件夹依然存在
+    5)rm
+        remove 删除文件/非空目录
+        rm 文件的路径   删除指定文件的路径
+        rm -rf 目录的路径   删除非空目录
+    6)vi
+        文本编辑器
+        vi 文件名路径   打开某个文件向里面输入数据
+        进入vi界面后，首先进入的是命令行模式，此时不能输入数据
+        输入a/i可以进入输入模式，此时可以输入数据
+        输入完成后，按esc退出输入模式，重新进入命令模式
+        输入:wq,保存输入的内容并退出vi界面
+            wq: write and quit  保存退出
+            w :write    保存不退出，还处于vi界面
+            q :quit      在没有修改的情况下直接退出 
+            q!:     强制退出不保存
+            输入数据还可以使用echo指令
+            echo 数据 > 1.txt   覆盖模式
+            echo 数据 >> 1.txt   追加模式
+    7)cat
+        catch   读取文件的内容
+        cat 文件路径
+
+2.Git的使用
+    所有的git命令都是以git开头的
+    1）配置个人用户信息
+        git config --global user.name "你的用户名"
+        git config --global user.email "你的邮箱"
+    2）初始化本地仓库
+        先进入目标文件夹
+        使用指令:git init
+            此时在目标文件夹中会自动生成一个隐藏的文件夹.git
+            同时，命令行中，路径的最后会出现(master)
+    3）查看本地仓库的状态
+        git status
+    4）提交
+        1.提交到暂存区
+            git add 文件名
+        2.将暂存区的内容提交到master
+            git commit -m "提交信息"

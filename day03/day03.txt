@@ -1,0 +1,18 @@
+1、使用SSH方式关联远程仓库
+    关联远程仓库有两种:HTTPS,SSH
+    HTTPS在每次推送时，都需要输入用户名和密码，比较麻烦
+    配置SSH:
+        查看本机是否有密钥
+            密钥包含两个:公钥，私钥
+            创建生成密钥：
+                ssh-keygen -t rsa -C "邮箱地址"
+            打开公钥，复制里面的内容
+            点击GitHub个人头像-->settings-->SSH and GPG keys
+                                        -->new SSH key
+                                        -->Title中填写名称(随意写),将复制的内容粘贴进key中
+                                        -->Add SSH key 
+
+    关联并推送
+
+2、拉取数据
+    将远程仓库的内容下载到本地

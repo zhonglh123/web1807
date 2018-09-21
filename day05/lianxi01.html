@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src='../libs/angular.min.js'></script>
+</head>
+
+
+<body ng-app='app'>
+  <div ng-controller="ctrl">
+  <input type="text" ng-model="str" ng-change="chg()">
+  +
+  <input type="text" ng-model="str2" ng-change="chg()">
+  ={{result}}
+</div>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.controller("ctrl",["$scope",function($scope){
+    $scope.chg =function(){
+      //获取文本框的值
+      var a =$scope.str;
+      var b =$scope.str2;
+      if(a==undefined||a==""||isNaN(parseInt(a))){
+        $scope.str='';
+      }
+      if(b==undefined||b==""||isNaN(parseInt(b))){
+        $scope.str2='';
+      }
+      $scope.result = parseInt($scope.str||0)+parseInt($scope.str2||0);
+    }
+  }]);
+</script>
+
+
+</html>

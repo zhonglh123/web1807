@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+    <script src='../libs/angular.min.js'></script>
+</head>
+<body ng-app='app'>
+    <ul ng-controller="ctrl">
+        <li>
+            uppercase:{{message|uppercase}}
+        </li>
+        <li>
+            lowercase:{{message|lowercase}}
+        </li>
+        <li>
+            date:{{time|date:"yyyy/MM/dd HH:mm:ss"}}
+        </li>
+        <li>
+            currency:{{money|currency}} <br>
+            {{money|currency:"￥"}}
+        </li>
+        <li>
+            {{obj}} <br>
+            json:{{obj|json}}
+            {{stu}}
+        </li>
+        <li>
+            {{names}} <br>
+            filter:{{names|filter:'a'}}
+        </li>
+        <li>
+            limitTo:{{message|limitTo:4}} <br>
+            limitTo:{{message|limitTo:-4}} <br>
+            {{names|limitTo:2}}
+        </li>
+        <li>
+            number:{{num|number}} <br>
+            number:{{num|number:-2}} <br>
+        </li>
+        <li>
+            orderBy: <br>
+            {{nums|orderBy:"":true}}<br>
+            {{names|orderBy}}<br>
+            {{stus|orderBy:["+age","-id"]}}
+        </li>
+    </ul>
+</body>
+<script>
+    var app = angular.module('app', []);
+    app.controller("ctrl",["$scope",function($scope){
+        $scope.message = "good good study,day day up";
+        $scope.time = new Date();
+        $scope.money = 25;
+        $scope.obj = new Object();
+        $scope.obj.name = "张三";
+        $scope.obj.age = 23;
+        $scope.names = ['张三','李四','jack','allen','rose'];
+        $scope.num = 1234.5678;
+        $scope.nums = [4,5,7,3,6,1,8];
+        $scope.stus = [
+            {id:101,name:'mike',age:23},
+            {id:103,name:'jack',age:22},
+            {id:105,name:'rose',age:26},
+            {id:104,name:'allen',age:24},
+            {id:102,name:'lily',age:19}
+        ];
+    }])
+</script>
+</html>

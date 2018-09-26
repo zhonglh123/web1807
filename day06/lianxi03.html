@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+    <script src='../libs/angular.min.js'></script>
+</head>
+<body ng-app='app'>
+        <div ng-controller="ctrl">
+            <button ng-click="click()">点击</button>
+            <div>{{num}}</div>   
+        </div>
+</body>
+<script>
+    var app = angular.module('app', []);
+    var result="";
+    var id = "";
+    app.controller("ctrl",function($scope,$interval,$timeout){
+        $scope.click = function(){
+            id = $interval(function(){
+                $scope.num = Math.floor(Math.random()*100);
+                result = $scope.num + " " + result;
+                console.log(result);
+            },1000);
+            $timeout(function(){
+                $scope.num = "抽奖完成,中奖号码有:"+result;
+                $interval.cancel(id);
+            },5500);
+        }
+       
+    });
+</script>
+</html>

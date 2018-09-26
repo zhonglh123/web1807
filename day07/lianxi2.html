@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+    <script src='../libs/angular.min.js'></script>
+    <script src="../libs/angular-route.js"></script>
+</head>
+<body ng-app='app'>
+    <a href="#/a">圆形</a>
+    <a href="#/b">方形</a>
+    <div ng-view></div>
+</body>
+<script>
+    //创建应用时，添加依赖:路由模块
+    //因为该应用使用到了路由模块，对路由模块产生了依赖关系
+    var app = angular.module('app', ["ngRoute"]);
+    app.controller("ctrl",function($scope){
+    })
+    //配置路由
+    /*
+        路由模块的配置
+    */
+    app.config(["$routeProvider",function($routeProvider){
+        $routeProvider.when("/",{
+            redirectTo:"/a"
+        }).when("/a",{
+            templateUrl:"./yuan.html",
+            controller:"ctrl"
+        }).when("/b",{
+            templateUrl:"./fang.html",
+            controller:"ctrl"
+        })
+    }]);
+</script>
+</html>

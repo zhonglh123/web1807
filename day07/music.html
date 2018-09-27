@@ -38,18 +38,19 @@ music.controller("ctrl",["$scope","$http","$routeParams",function($scope,$http,$
 //获取参数
     var id = $routeParams.id;
     $http({
-        url:"./list.php",
-        params:{id:id}
+        url:"./list.php?id="+id,
+        // params:{id:id}
     }).success(function(result){
         // $scope.music = result;
         //筛选数据
-        var music = [];//保存符合条件的数据
-        for(var i=0;i<result.length;i++){
-            if(id==result[i].pid){
-                music.push(result[i]);
-            }
-        }
-        $scope.music = music;
+        // var music = [];//保存符合条件的数据
+        // for(var i=0;i<result.length;i++){
+        //     if(id==result[i].pid){
+        //         music.push(result[i]);
+        //     }
+        // }
+        // $scope.music = music;
+        $scope.music = result;
     });
 }]);
 </script>

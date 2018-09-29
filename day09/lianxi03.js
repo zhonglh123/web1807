@@ -34,7 +34,7 @@ fs.readdir("./a",function(err,files){
             if(err){
                 console.log(err);
                 return;
-            } 
+            }   
             if(stats.isFile()){
                 console.log(files[i]+"是一个文件");
                 str1 += files[i]+" ";
